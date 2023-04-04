@@ -75,6 +75,10 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     write /sys/kernel/icnss/wpss_boot 1
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
+    
+    # Enable touchpanel's offscreen gestures
+    chown system system /proc/touchpanel/aosp_gesture_enable
+    write /proc/touchpanel/aosp_gesture_enable 1
 
     setprop vendor.boot.project_name ${ro.boot.project_name}
 
@@ -224,6 +228,10 @@ on boot
 
     # limit discard size to 128MB in order to avoid long IO latency
     write /sys/block/sda/queue/discard_max_bytes 134217728
+    
+    # DT2W
+    chown system system /proc/touchpanel/aosp_double_tap_enable
+    write /proc/touchpanel/aosp_double_tap_enable 1
 
 # msm specific files that need to be created on /data
 on post-fs-data
