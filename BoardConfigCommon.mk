@@ -133,6 +133,14 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := BRAND_SHOW_FLAG=oneplus
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8250
 TARGET_KERNEL_CONFIG := ghost_defconfig
 
+# Clang
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := playgroundtc
+TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/clang-playgroundtc
+TARGET_KERNEL_ADDITIONAL_FLAGS := LD=ld.lld LLVM=1 LLVM_IAS=1
+KERNEL_SUPPORTS_LLVM_TOOLS := true
+KERNEL_LD := LD=ld.lld
+
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := kona
